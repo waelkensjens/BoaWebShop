@@ -10,12 +10,9 @@
         </li>
 
         <li
-            v-for="category in categories"
+            v-for="category in $page.props.categories"
             class="inline-flex items-center">
-          <a
-              href="" class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white">
-            {{ category.name }}
-          </a>
+          <Link :href="Routing.generate('categories.show', {name: category.name})"> {{category.name}}</Link>
         </li>
       </ol>
     </div>
@@ -31,10 +28,7 @@
 
 <script setup>
 import Routing from '@/Routing'
-
-const props = defineProps({
-  categories:Object
-})
+import { Link } from '@inertiajs/inertia-vue3'
 
 
 

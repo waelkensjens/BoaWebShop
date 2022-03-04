@@ -3,7 +3,7 @@
 :categories="categories"
 />
   <slot />
-  <footer/>
+  <Footer/>
 </template>
 
 <script>

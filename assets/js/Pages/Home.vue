@@ -1,7 +1,5 @@
 <template>
-   <header
-     :categories = categories
-   />
+   <header/>
   <div class="bg-white flex">
     <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Our products</h2>
@@ -15,7 +13,7 @@
                aspect-w-1 aspect-h-1 rounded-md
                 overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
             <img
-                src="'/build/images/beer.jpg'"
+                src="{{ asset('build/images/beer.jpg') }}"
                 class="w-full h-full object-center object-cover lg:w-full lg:h-full"
                 alt="beer-image">
           </div>
@@ -52,8 +50,8 @@ import Header from '@/Shared/Header'
 import Routing from '@/Routing'
 const props = defineProps({
     products: Object,
-    categories: Object,
 })
+const publicPath = 'public/build/images'
 
 
 </script>
