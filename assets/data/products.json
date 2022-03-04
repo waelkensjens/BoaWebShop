@@ -1,0 +1,49 @@
+{
+   "products":[
+      {
+         "id":1,
+         "name":"The alcemist Heady Topper",
+         "description":"An American Double IPA. Drink from the can.",
+         "alcohol_percentage":8.0,
+         "price_excl":2.5,
+         "vat":6,
+         "category_id":1
+      },
+      {
+         "id":2,
+         "name":"Brouwerij West Picnic Lightning IPA",
+         "description":"Mecca Grade Estate Malt, Raw Wheat, and Rolled Oats. Heavily hopped with Chinook, Simcoe, and Citra.",
+         "alcohol_percentage":6.8,
+         "price_excl":2.8,
+         "vat":6,
+         "category_id":1
+      },
+      {
+         "id":3,
+         "name":"Sierra Nevada Pale Ale",
+         "description":"Pale Ale sparked the American craft beer revolution. Bold and complex with pine and citrus notes from whole-cone Cascade hops.",
+         "alcohol_percentage":5.6,
+         "price_excl":3.2,
+         "vat":6,
+         "category_id":2
+      },
+      {
+         "id":4,
+         "name":"Bell's Expedition Stout",
+         "description":"One of the earliest examples of the Russian Imperial Stout in the United States, Expedition Stout offers immensely complex flavors crafted specifically with vintage aging in mind, as its profile will continue to mature and develop over the years.",
+         "alcohol_percentage":10.5,
+         "price_excl":2,
+         "vat":6,
+         "category_id":3
+      },
+      {
+         "id":5,
+         "name":"North Coast Old Rasputin Russian Imperial Stout",
+         "description":"Produced in the tradition of 18th Century English brewers who supplied the court of Russia's Catherine the Great, Old Rasputin seems to develop a cult following wherever it goes",
+         "alcohol_percentage":9,
+         "price_excl":1.9,
+         "vat":6,
+         "category_id":3
+      }
+   ]
+}
