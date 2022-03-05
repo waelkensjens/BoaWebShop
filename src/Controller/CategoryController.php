@@ -23,7 +23,14 @@ class CategoryController extends AbstractController
         $this->categoryRepo = $categoryRepository;
     }
 
-    #[Route('/categories/{name}', name: 'categories.show', options: [ 'expose' => true], methods: ['GET','HEAD'])]
+    /**
+     * @Route(
+     *     "/categories/{name}",
+     *     name="categories.show",
+     *     methods={"GET"},
+     *     options={"expose"=true})
+     * )
+     */
     public function index(InertiaInterface $inertia, string $name): Response
     {
         $category  =  $this->categoryRepo->findOneBy(['name' => $name]);

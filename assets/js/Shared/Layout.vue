@@ -2,7 +2,7 @@
 <Header
 :categories="categories"
 />
-  <slot />
+  <slot/>
   <Footer/>
 </template>
 
@@ -15,7 +15,6 @@ export default {
 <script setup>
 import Footer from "./Footer";
 import Header from "./Header"
-
 
 
 const props = defineProps({

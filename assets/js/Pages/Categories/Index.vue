@@ -8,7 +8,7 @@
             v-for="product in category.products"
             class="group relative">
           <div class="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-            <img src="{{ asset('build/images/beer.jpg') }}"
+            <img :src="image"
                  class="w-full h-full object-center object-cover lg:w-full lg:h-full"
                  alt="beer-image">
           </div>
@@ -35,6 +35,7 @@
 
 <script>
 import Layout from "@/Shared/Layout";
+import image from '../../../images/beer.jpg'
 
 export default {
   name: "Index",
@@ -42,6 +43,8 @@ export default {
 }
 </script>
 <script setup>
+
+import {computed} from "vue";
 
 const props = defineProps({
   product: Object,

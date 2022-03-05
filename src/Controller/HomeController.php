@@ -41,8 +41,14 @@ class HomeController extends AbstractController
 
     }
 
-
-    #[Route('/', name: 'home', options: [ 'expose' => true], methods: ['GET','HEAD'])]
+    /**
+     * @Route(
+     *     "/",
+     *     name="home",
+     *     methods={"GET"},
+     *     options={"expose"=true})
+     * )
+     */
     public function index(
         InertiaInterface $inertia
     ): Response {
