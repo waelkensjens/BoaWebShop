@@ -9,7 +9,9 @@
 
       <div class="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
         <span class="font-bold text-gray-800 dark:text-gray-200">€{{product.priceExcl.toFixed(2)}}</span>
-        <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button>
+        <button
+            @click="addItemToCart(product)"
+            class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">Add to cart</button>
       </div>
     </div>
   </div>
@@ -18,14 +20,34 @@
 
 <script setup>
 import image from '../../images/beer.jpg'
+import {ref} from "vue";
+import {usePage} from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
-  product: Object
+  product: Object,
 })
+const cart = ref(usePage().props.value.data.cart)
 
+
+import {useStore} from "vuex";
+import {computed} from "vue";
+
+const store = useStore()
+const count = computed(() => store.state.count)
+
+const increment = () => store.dispatch('increment')
+const decrement = () => store.dispatch('decrement')
+const addProduct = (product) => store.dispatch("addProduct", product)
 
 const addItemToCart = (product) => {
-  this.$emit("addItemToCart", product);
+  console.log('clicked')
+  increment()
+  addProduct(product)
+    // Inertia.post(route('addToCart',
+    //     {
+    //       product: product,
+    //       url: window.location.href
+    //     }))
 }
 </script>
 

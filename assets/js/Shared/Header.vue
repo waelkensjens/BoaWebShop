@@ -21,7 +21,7 @@
         </span>
 
 
-      <div v-for="(category, index) in $page.props.categories">
+      <div v-for="(category, index) in categories">
         <Link
             class="text-gray-600
             dark:text-gray-200
@@ -43,8 +43,10 @@
       </div>
     </div>
     <div class="flex flex-inline justify-end">
-      <a class="relative inline-block hover:text-pink-500"
-          href="">
+      <button
+          @click="openCart"
+          class="relative inline-block hover:text-pink-500">
+
         <i class="las la-shopping-cart la-2x ">
 
         </i>
@@ -52,7 +54,7 @@
             v-if="true"
             class="
             absolute
-            -top-2
+            -top-1.5
             -left-4
             p-1
             text-xs
@@ -60,10 +62,10 @@
             bg-pink-500
             rounded-full"
         >
-          99
+          {{ count }}
         </span>
         <span class="">cart</span>
-      </a>
+      </button>
 
     </div>
   </nav>
@@ -73,10 +75,23 @@
 
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3'
+import {Inertia} from "@inertiajs/inertia";
 
 const props = defineProps({
   categories: Object
 })
+
+
+import {useStore} from "vuex";
+import {computed} from "vue";
+
+const store = useStore()
+const count = computed(() => store.state.count)
+
+const cart = computed(() => store.getters.getCart)
+const openCart = () => {
+  Inertia.get(route('cart', {cart: cart}))
+}
 
 </script>
 

@@ -9,7 +9,6 @@
             <Product :product="product"/>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -23,14 +22,11 @@ export default {
 </script>
 
 <script setup>
-import Header from '@/Shared/Header'
-import Routing from '@/Routing'
-import image from '../../images/beer.jpg'
 import Product from '@/Shared/Product'
 const props = defineProps({
     products: Object,
+    data: Object
 })
-
 
 
 </script>

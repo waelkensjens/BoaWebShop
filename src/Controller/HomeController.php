@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Rompetomp\InertiaBundle\Service\InertiaInterface;
@@ -23,10 +24,12 @@ class HomeController extends AbstractController
     protected CategoryRepository $categoryRepo;
     protected ProductRepository $productRepo;
     protected Serializer $serializer;
+    protected RequestStack $requestStack;
 
     public function __construct(
         CategoryRepository $categoryRepository,
         ProductRepository $productRepository,
+        RequestStack $requestStack
     ) {
         $this->categoryRepo = $categoryRepository;
         $this->productRepo = $productRepository;
@@ -38,6 +41,7 @@ class HomeController extends AbstractController
         $normalizers = [new ObjectNormalizer($classMetadataFactory, $metadataAwareNameConverter)];
 
         $this->serializer = new Serializer($normalizers, $encoders);
+        $this->requestStack = $requestStack;
 
     }
 
@@ -52,10 +56,33 @@ class HomeController extends AbstractController
     public function index(
         InertiaInterface $inertia
     ): Response {
+
         return $inertia->render('Home',
             [
                 'categories' => $this->categoryRepo->findAll(),
                 'products' => $this->productRepo->findAll(),
+            ]
+        );
+    }
+    /**
+     * @Route(
+     *     "/cart",
+     *     name="cart",
+     *     methods={"GET"},
+     *     options={"expose"=true})
+     * )
+     */
+    public function cart(
+        InertiaInterface $inertia,
+        Request $request
+    ): Response {
+
+        dd($request->get('cart'));
+
+
+        return $inertia->render('Cart/Checkout',
+            [
+
             ]
         );
     }

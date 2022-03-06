@@ -29,7 +29,9 @@
         "vue": "^3.2.31",
         "vue-loader": "^16.7.0",
         "vue-meta": "^2.3.1",
-        "vue-template-compiler": "^2.6.11"
+        "vue-template-compiler": "^2.6.11",
+        "vuex": "^4.0.2",
+        "vuex-composition-helpers": "^2.0.1"
     },
     "private": true,
     "scripts": {

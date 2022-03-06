@@ -1,6 +1,6 @@
 <template>
 <Header
-:categories="categories"
+:categories="$page.props.data.categories"
 />
   <slot/>
   <Footer/>
@@ -15,10 +15,10 @@ export default {
 <script setup>
 import Footer from "./Footer";
 import Header from "./Header"
-
+import {ref} from "vue";
 
 const props = defineProps({
-  categories: Object
+  data: Object
 })
 
 </script>

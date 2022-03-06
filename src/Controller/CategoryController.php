@@ -8,6 +8,7 @@ use Rompetomp\InertiaBundle\Service\InertiaInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use function mysql_xdevapi\getSession;
 
 class CategoryController extends AbstractController
 {
@@ -34,6 +35,7 @@ class CategoryController extends AbstractController
     public function index(InertiaInterface $inertia, string $name): Response
     {
         $category  =  $this->categoryRepo->findOneBy(['name' => $name]);
+
 
         return $inertia->render(
             component: 'Categories/Index',
