@@ -20,7 +20,7 @@ either laravel or symfony
     * Had to use vuex state management     
     - [X] on click of add to cart add product through http request
     - [X] if product already inserted raise quantity by 1
-- [ ] Render Cart
+- [ ] Render Cart (70%)
     - [X] add link in navbar to go to cart
     - [X] on this page list products inside cart
     - [ ] make sure we are able to adjust quantity and update cart with correct data
