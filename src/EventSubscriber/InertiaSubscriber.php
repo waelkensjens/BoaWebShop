@@ -42,7 +42,7 @@ class InertiaSubscriber implements EventSubscriberInterface
     {
         return $this->inertia->getVersion();
     }
-
+// Todo: Loook how to store session from vue to symfony
     public function onControllerEvent($event)
     {
         $session = $this->requestStack->getSession();
@@ -60,21 +60,5 @@ class InertiaSubscriber implements EventSubscriberInterface
                 'cart' => $cart
             ]
         );
-    }
-
-    public function someMethod()
-    {
-        $session = $this->requestStack->getSession();
-
-        // stores an attribute in the session for later reuse
-        $session->set('attribute-name', 'attribute-value');
-
-        // gets an attribute by name
-        $foo = $session->get('foo');
-
-        // the second argument is the value returned when the attribute doesn't exist
-        $filters = $session->get('filters', []);
-
-        // ...
     }
 }

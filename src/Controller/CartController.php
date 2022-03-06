@@ -41,7 +41,7 @@ class CartController extends AbstractController
         InertiaInterface $inertia,
         Request $request
     ): Response {
-
+    //Todo: tried storing to session through cookies
         $cookies = $request->cookies;
 
         if ($cookies->has('vuex'))
@@ -52,24 +52,6 @@ class CartController extends AbstractController
         //do calculations?
 
         return $inertia->render('Cart/Checkout',
-            [
-
-            ]
-        );
-    }
-    /**
-     * @Route(
-     *     "/cart/test",
-     *     name="cartTest",
-     *     methods={"GET"},
-     *     options={"expose"=true})
-     * )
-     */
-    public function cartTest(
-        InertiaInterface $inertia,
-        Request $request
-    ): Response {
-        return $inertia->render('Cart/Cart',
             [
 
             ]
@@ -88,6 +70,7 @@ class CartController extends AbstractController
      */
     public function addToCart(Request $request): Response
     {
+        //Todo: check how to store to session through ajax
         $session = $this->requestStack->getSession();
         $url = $request->get('url');
 

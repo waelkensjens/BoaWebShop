@@ -26,7 +26,7 @@ class ProductController extends AbstractController
     return $this->render(
         view: 'categories/index.html.twig',
         parameters: [
-            'product' => $category
+            'product' => $product
         ]
     );
     }
