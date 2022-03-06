@@ -72,7 +72,10 @@
             <span>Total cost</span>
             <span>{{ totalWithShipping.toFixed(2) }}</span>
           </div>
-          <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+          <button
+              @click="test"
+              :disabled="true"
+              class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full disabled:opacity-60 disabled:cursor-not-allowed">Checkout</button>
         </div>
       </div>
 
@@ -101,6 +104,8 @@ let cartTotal = computed(() => store.getters.getCartTotal)
 const shipping = 10.00
 const totalWithShipping = computed(() => shipping + cartTotal.value)
 
+const disableCheckout = cart.length === 0
+
 const increment = () => store.dispatch('increment')
 const decrement = () => store.dispatch('decrement')
 const increaseAmount = (product) => {
@@ -118,6 +123,9 @@ const backToShop = () => {
   Inertia.get(route('home'))
 }
 
+const test = () => {
+  console.log('fdfdfdffddf')
+}
 </script>
 
 <style scoped>
