@@ -64,26 +64,4 @@ class HomeController extends AbstractController
             ]
         );
     }
-    /**
-     * @Route(
-     *     "/cart",
-     *     name="cart",
-     *     methods={"GET"},
-     *     options={"expose"=true})
-     * )
-     */
-    public function cart(
-        InertiaInterface $inertia,
-        Request $request
-    ): Response {
-
-        dd($request->get('cart'));
-
-
-        return $inertia->render('Cart/Checkout',
-            [
-
-            ]
-        );
-    }
 }

@@ -20,34 +20,23 @@
 
 <script setup>
 import image from '../../images/beer.jpg'
-import {ref} from "vue";
-import {usePage} from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
   product: Object,
 })
-const cart = ref(usePage().props.value.data.cart)
-
 
 import {useStore} from "vuex";
-import {computed} from "vue";
 
 const store = useStore()
-const count = computed(() => store.state.count)
 
 const increment = () => store.dispatch('increment')
 const decrement = () => store.dispatch('decrement')
 const addProduct = (product) => store.dispatch("addProduct", product)
 
 const addItemToCart = (product) => {
-  console.log('clicked')
   increment()
   addProduct(product)
-    // Inertia.post(route('addToCart',
-    //     {
-    //       product: product,
-    //       url: window.location.href
-    //     }))
+
 }
 </script>
 

@@ -15,7 +15,6 @@ export default {
 <script setup>
 import Footer from "./Footer";
 import Header from "./Header"
-import {ref} from "vue";
 
 const props = defineProps({
   data: Object

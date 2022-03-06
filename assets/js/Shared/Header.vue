@@ -76,21 +76,22 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3'
 import {Inertia} from "@inertiajs/inertia";
+import {useStore} from "vuex";
+import {computed, watch} from "vue";
 
 const props = defineProps({
   categories: Object
 })
 
-
-import {useStore} from "vuex";
-import {computed} from "vue";
-
 const store = useStore()
-const count = computed(() => store.state.count)
 
-const cart = computed(() => store.getters.getCart)
+let count = computed(() => store.getters.getCount)
+
+
+
+
 const openCart = () => {
-  Inertia.get(route('cart', {cart: cart}))
+  Inertia.get(route('cart'))
 }
 
 </script>

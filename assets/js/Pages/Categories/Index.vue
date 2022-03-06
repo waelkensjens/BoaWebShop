@@ -29,9 +29,6 @@ export default {
 import image from '../../../images/beer.jpg'
 import Product from '@/Shared/Product'
 
-
-import {computed} from "vue";
-
 const props = defineProps({
   product: Object,
   category: Object

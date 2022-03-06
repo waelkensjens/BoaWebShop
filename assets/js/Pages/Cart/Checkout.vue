@@ -1,146 +1,81 @@
 <template>
-  <div class="h-screen grid grid-cols-3">
-    <div class="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">
-      <div class="mt-8 p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
-        <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
-          <div class="text-yellow-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 sm:w-5 h-6 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div class="text-sm font-medium ml-3">Checkout</div>
+  <div class="container mx-auto mt-10">
+    <div class="flex shadow-md my-10">
+      <div class="w-3/4 bg-white px-10 py-10">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+          <h2 class="font-semibold text-2xl">{{ count }}</h2>
         </div>
-        <div class="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">Complete your shipping and payment details below.</div>
-        <div class="absolute sm:relative sm:top-auto sm:right-auto ml-auto right-4 top-4 text-gray-400 hover:text-gray-800 cursor-pointer">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">vat</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
         </div>
-      </div>
-      <div class="rounded-md">
-        <form id="payment-form" method="POST" action="">
-          <section>
-            <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Shipping & Billing Information</h2>
-            <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
-              <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                <span class="text-right px-2">Name</span>
-                <input name="name" class="focus:outline-none px-3" placeholder="Try Odinsson" required="">
-              </label>
-              <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                <span class="text-right px-2">Email</span>
-                <input name="email" type="email" class="focus:outline-none px-3" placeholder="try@example.com" required="">
-              </label>
-              <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                <span class="text-right px-2">Address</span>
-                <input name="address" class="focus:outline-none px-3" placeholder="10 Street XYZ 654">
-              </label>
-              <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                <span class="text-right px-2">City</span>
-                <input name="city" class="focus:outline-none px-3" placeholder="San Francisco">
-              </label>
-              <label class="inline-flex w-2/4 border-gray-200 py-3">
-                <span class="text-right px-2">State</span>
-                <input name="state" class="focus:outline-none px-3" placeholder="CA">
-              </label>
-              <label class="xl:w-1/4 xl:inline-flex py-3 items-center flex xl:border-none border-t border-gray-200 py-3">
-                <span class="text-right px-2 xl:px-0 xl:text-none">ZIP</span>
-                <input name="postal_code" class="focus:outline-none px-3" placeholder="98603">
-              </label>
-              <label class="flex border-t border-gray-200 h-12 py-3 items-center select relative">
-                <span class="text-right px-2">Country</span>
-                <div id="country" class="focus:outline-none px-3 w-full flex items-center">
-                  <select name="country" class="border-none bg-transparent flex-1 cursor-pointer appearance-none focus:outline-none">
-                    <option value="AU">Australia</option>
-                    <option value="BE">Belgium</option>
-                    <option value="BR">Brazil</option>
-                    <option value="CA">Canada</option>
-                    <option value="CN">China</option>
-                    <option value="DK">Denmark</option>
-                    <option value="FI">Finland</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                    <option value="HK">Hong Kong</option>
-                    <option value="IE">Ireland</option>
-                    <option value="IT">Italy</option>
-                    <option value="JP">Japan</option>
-                    <option value="LU">Luxembourg</option>
-                    <option value="MX">Mexico</option>
-                    <option value="NL">Netherlands</option>
-                    <option value="PL">Poland</option>
-                    <option value="PT">Portugal</option>
-                    <option value="SG">Singapore</option>
-                    <option value="ES">Spain</option>
-                    <option value="TN">Tunisia</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="US" selected="selected">United States</option>
-                  </select>
-                </div>
-              </label>
-            </fieldset>
-          </section>
-        </form>
-      </div>
-      <div class="rounded-md">
-        <section>
-          <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Payment Information</h2>
-          <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
-            <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-              <span class="text-right px-2">Card</span>
-              <input name="card" class="focus:outline-none px-3 w-full" placeholder="Card number MM/YY CVC" required="">
-            </label>
-          </fieldset>
-        </section>
-      </div>
-      <button class="submit-button px-4 py-3 rounded-full bg-pink-400 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
-        Pay €846.98
-      </button>
-    </div>
-    <div class="col-span-1 bg-white lg:block hidden">
-      <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
-      <ul class="py-6 border-b space-y-6 px-8">
-        <li class="grid grid-cols-6 gap-2 border-b-1">
-          <div class="col-span-1 self-center">
-            <img src="https://bit.ly/3oW8yej" alt="Product" class="rounded w-full">
-          </div>
-          <div class="flex flex-col col-span-3 pt-2">
-            <span class="text-gray-600 text-md font-semi-bold">Studio 2 Headphone</span>
-            <span class="text-gray-400 text-sm inline-block pt-2">Red Headphone</span>
-          </div>
-          <div class="col-span-2 pt-3">
-            <div class="flex items-center space-x-2 text-sm justify-between">
-              <span class="text-gray-400">2 x €30.99</span>
-              <span class="text-pink-400 font-semibold inline-block">€61.98</span>
+        <div
+            v-for="(product, index) in cart" :key="index"
+            class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+          <div class="flex w-2/5"> <!-- product -->
+            <div class="w-20">
+              <img class="h-24" :src="image" alt="">
+            </div>
+            <div class="flex flex-col justify-between ml-4 flex-grow">
+              <span class="font-bold text-sm">{{ product.name }}</span>
+              <span class="text-red-500 text-xs">{{ }}</span>
+              <button @click="removeFromCart" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
             </div>
           </div>
-        </li>
-        <li class="grid grid-cols-6 gap-2 border-b-1">
-          <div class="col-span-1 self-center">
-            <img src="https://bit.ly/3lCyoSx" alt="Product" class="rounded w-full">
+          <div class="flex justify-center w-1/5">
+            <button @click="decreaseAmount(product)" class="font-semibold hover:text-red-500 text-gray-500 text-xs">
+              <svg
+                  class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
+            </button>
+            <span class="text-center w-1/5 font-semibold text-sm">{{ product.quantity }}</span>
+            <button @click="increaseAmount(product)" class="font-semibold hover:text-red-500 text-gray-500 text-xs">
+              <svg
+                  class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+              </svg>
+            </button>
           </div>
-          <div class="flex flex-col col-span-3 pt-2">
-            <span class="text-gray-600 text-md font-semi-bold">Apple iPhone 13</span>
-            <span class="text-gray-400 text-sm inline-block pt-2">Phone</span>
-          </div>
-          <div class="col-span-2 pt-3">
-            <div class="flex items-center space-x-2 text-sm justify-between">
-              <span class="text-gray-400">1 x €785</span>
-              <span class="text-pink-400 font-semibold inline-block">€785</span>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div class="px-8 border-b">
-        <div class="flex justify-between py-4 text-gray-600">
-          <span>Subtotal</span>
-          <span class="font-semibold text-pink-500">€846.98</span>
+          <span class="text-center w-1/5 font-semibold text-sm">€{{ product.priceExcl.toFixed(2) }}/pc.</span>
+          <span class="text-center w-1/5 font-semibold text-sm">
+            {{ product.vat }}%  => {{product.vatPerPiece.toFixed(2)}}</span>
+          <span class="text-center w-1/5 font-semibold text-sm">€{{ product.grandTotal.toFixed(2) }}</span>
         </div>
-        <div class="flex justify-between py-4 text-gray-600">
-          <span>Shipping</span>
-          <span class="font-semibold text-pink-500">Free</span>
+
+
+        <button @click="backToShop" class="flex font-semibold text-indigo-600 text-sm mt-10">
+
+          <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
+            <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+          Continue Shopping
+        </button>
+      </div>
+
+      <div id="summary" class="w-1/4 px-8 py-10">
+        <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+        <div class="flex justify-between mt-10 mb-5">
+          <span class="font-semibold text-sm uppercase">Items {{count}}</span>
+          <span class="font-semibold text-sm">€{{ cartTotal.toFixed(2) }}</span>
+        </div>
+        <div>
+          <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
+          <select class="block p-2 text-gray-600 w-full text-sm">
+            <option>Standard shipping: €10.00</option>
+          </select>
+        </div>
+        <div class="border-t mt-8">
+          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+            <span>Total cost</span>
+            <span>{{ totalWithShipping.toFixed(2) }}</span>
+          </div>
+          <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
         </div>
       </div>
-      <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
-        <span>Total</span>
-        <span>€846.98</span>
-      </div>
+
     </div>
   </div>
 </template>
@@ -151,6 +86,38 @@ import Layout from "@/Shared/Layout"
 export default {
   layout: Layout,
 }
+</script>
+<script setup>
+import {useStore} from "vuex";
+import image from '../../../images/beer.jpg'
+import {isNumber} from "lodash";
+import {Inertia} from "@inertiajs/inertia";
+import {computed} from "vue";
+const store = useStore()
+
+const cart = store.getters.getCart
+const count = store.getters.getCount
+let cartTotal = computed(() => store.getters.getCartTotal)
+const shipping = 10.00
+const totalWithShipping = computed(() => shipping + cartTotal.value)
+
+const increment = () => store.dispatch('increment')
+const decrement = () => store.dispatch('decrement')
+const increaseAmount = (product) => {
+  increment()
+  store.dispatch("addProduct", product)
+}
+const decreaseAmount = (product) => {
+
+}
+const removeFromCart = () => {
+  console.log('remove')
+}
+
+const backToShop = () => {
+  Inertia.get(route('home'))
+}
+
 </script>
 
 <style scoped>

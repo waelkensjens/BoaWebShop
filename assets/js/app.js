@@ -2,15 +2,23 @@ import '../styles/app.css';
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import {createStore} from "vuex";
-import {isNumber, isSet} from "lodash";
-import {number} from "tailwindcss/lib/util/dataTypes";
+import createPersistedState from 'vuex-persistedstate';
+import Cookies from 'js-cookie';
 
 
 const store = createStore({
     state: {
         cart: [],
-        count: 0
+        count: 0,
+        cartTotal:0,
     },
+    plugins: [createPersistedState({
+        storage: {
+            getItem: key => Cookies.get(key),
+            setItem: (key, value) => Cookies.set(key, value, { expires: 3, secure: true }),
+            removeItem: key => Cookies.remove(key)
+        }
+    })],
     mutations: {
         increment (state) {
             state.count++
@@ -24,14 +32,36 @@ const store = createStore({
                     return item.id === product.id
                 })
             }
-            if (!productInserted(state, product)){
-                product.quantity = 1
-                return state.cart.push(product)
 
+            if (!productInserted(state, product)){
+                let priceExcl = product.priceExcl.toFixed(2)
+                let vat = ((priceExcl/100) * product.vat).toFixed(2)
+                priceExcl = parseFloat(priceExcl)
+                vat = parseFloat(vat)
+                let total = priceExcl + vat
+                total = parseFloat(total)
+                console.log(total)
+                product.quantity = 1
+                product.totalPerPiece = total
+                product.vatPerPiece = vat
+                product.grandTotal = product.totalPerPiece
+                product.totalVat = vat
+                state.cartTotal += product.grandTotal
+                return state.cart.push(product)
             } else {
                 return state.cart.some(function (item){
                     if (item.id === product.id) {
-                       return item.quantity++
+                        let priceExcl = item.priceExcl.toFixed(2)
+                        let vat = ((priceExcl/100) * item.vat).toFixed(2)
+                        priceExcl = parseFloat(priceExcl)
+                        vat = parseFloat(vat)
+                        let total = priceExcl + vat
+                        total = parseFloat(total)
+                        item.grandTotal += total
+                        item.totalVat += vat
+                        item.quantity++
+                        state.cartTotal += total
+                       return item
                     }
                 })
             }
@@ -59,6 +89,12 @@ const store = createStore({
         getCart: state => {
             return state.cart
         },
+        getCount: state => {
+            return state.count
+        },
+        getCartTotal: state => {
+            return state.cartTotal
+        }
     }
 
 })
