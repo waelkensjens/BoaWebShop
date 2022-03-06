@@ -61,8 +61,7 @@
         "symfony/yaml": "6.0.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "zenstruck/foundry": "^1.4",
-      "ext-http": "*"
+        "zenstruck/foundry": "^1.4"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
