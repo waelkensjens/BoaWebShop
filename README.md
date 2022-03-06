@@ -10,20 +10,22 @@ either laravel or symfony
 - [X] Import Data to local db
     - [X] Create local db (ideally using migrations)
     - [X] write import for reading json file and store in db
-- [ ] Render Products / categories
-    - [ ] List categories in navbar
-    - [ ] on click of categorie render category page (url using category name as slug) 
-    - [ ] on the above page render products related to the category
-    - [ ] per product render name, description, alcoholpercentage and price
-- [ ] Adding to cart
-    - [ ] create cart stored in session
-    - [ ] on click of add to cart add product through http request
-    - [ ] if product already inserted raise quantity by 1
+- [X] Render Products / categories
+    - [X] List categories in navbar
+    - [X] on click of categorie render category page (url using category name as slug) 
+    - [X] on the above page render products related to the category
+    - [X] per product render name, description, alcoholpercentage and price
+- [X] Adding to cart
+    - [X] create cart stored in session
+    * Had to use vuex state management     
+    - [X] on click of add to cart add product through http request
+    - [X] if product already inserted raise quantity by 1
 - [ ] Render Cart
-    - [ ] add link in navbar to go to cart
-    - [ ] on this page list products inside cart
+    - [X] add link in navbar to go to cart
+    - [X] on this page list products inside cart
     - [ ] make sure we are able to adjust quantity and update cart with correct data
-    - [ ] render vat included prices on page
+    * increasing works remove/decrease not yet
+    - [X] render vat included prices on page
   
   **both adjusting quantity as removing product will go through js so page doesn't refresh.
     When these are adjusted render alert to customer
